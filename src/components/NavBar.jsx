@@ -1,5 +1,11 @@
 import React from 'react'
 
+/**
+ * //////////////////////////////////////////////////////////
+ *      NAVIGATION BAR COMPONENT
+ * //////////////////////////////////////////////////////////
+ * @returns A Navigation Bar
+ */
 const NavBar = () => {
     return (
         <header>
