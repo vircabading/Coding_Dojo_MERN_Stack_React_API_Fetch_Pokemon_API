@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 
 /**
  * /////////////////////////////////////////////////////////////////////
@@ -10,21 +11,33 @@ const GetPokemon = () => {
     // //// FIELDS /////////////////////////////////////////////////////
     // **** List of Polkemon ********
     const [pokemonList, setPokemonList] = useState([]);
+    const [displayPokemon, setdisplayPokemon] = useState(false)
+
+    ////////////////////////////////////////////////////////////////////
+    // FETCH POKEMON API
+    useEffect(() => {
+        // **** Get First 807 Pokemon from thePokemon API **************
+        // fetch('https://pokeapi.co/api/v2/pokemon?limit=807')
+        //     .then(response => response.json())
+        //     .then(response => setPokemonList(response.results));
+        axios.get('https://pokeapi.co/api/v2/pokemon?limit=807')
+            .then(response => {
+                setPokemonList(response.data.results)
+            })
+    }, [])
 
     /**
      * *****************************************************************
      *      FETCH POKEMON
      *  ****************************************************************
+     *  Displays the List of Pokemon
      * @param {event} e 
      */
     const fetchPokemon = (e) => {
         e.preventDefault();
         console.log("*****************");
         console.log("In Fetch Pokemon");
-        // **** Get First 807 Pokemon from thePokemon API **************
-        fetch('https://pokeapi.co/api/v2/pokemon?limit=807')
-            .then(response => response.json())
-            .then(response => setPokemonList(response.results));
+        setdisplayPokemon(true);
     }
 
     // //// OUTPUT /////////////////////////////////////////////////////
@@ -49,12 +62,13 @@ const GetPokemon = () => {
                 <tbody>
                     {/* **** Go through the List of Pokemon and Display one Pokemon per row on the table ******** */}
                     {
-                        pokemonList.map( (pokemon, idx) => {
-                            return <tr key={ idx }>
-                                <th scope="row">{ idx+1 }</th>
-                                <td>{ pokemon.name }</td>
+                        displayPokemon &&
+                        pokemonList.map((pokemon, idx) => {
+                            return <tr key={idx}>
+                                <th scope="row">{idx + 1}</th>
+                                <td>{pokemon.name}</td>
                             </tr>
-                        } )
+                        })
                     }
                 </tbody>
             </table>
