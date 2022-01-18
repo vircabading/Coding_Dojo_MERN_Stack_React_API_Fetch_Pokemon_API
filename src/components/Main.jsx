@@ -11,7 +11,7 @@ const Main = () => {
         <main role="main">
             <div className='container mt-4'>
                 <div className='row border'>
-                    <h1>In Main</h1>
+                    {/* **** Get Pokemon Component ******** */}
                     <GetPokemon />
                 </div>
             </div>
