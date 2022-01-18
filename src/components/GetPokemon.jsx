@@ -30,7 +30,23 @@ const GetPokemon = () => {
                 </button>
             </form>
             <h3>Pokemon List</h3>
-            <p>{JSON.stringify(pokemonList)}</p>
+
+            <table className='table'>
+                <thead className="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Pokemon</th>
+                    </tr>
+                    {
+                        pokemonList.map( (pokemon, idx) => {
+                            return <tr key={ idx }>
+                                <th scope="row">{ idx+1 }</th>
+                                <td>{ pokemon.name }</td>
+                            </tr>
+                        } )
+                    }
+                </thead>
+            </table>
         </div>
     )
 }
