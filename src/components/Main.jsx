@@ -1,4 +1,5 @@
 import React from 'react'
+import GetPokemon from './GetPokemon'
 
 /**
  * ////////////////////////////////////////////////////////
@@ -11,6 +12,7 @@ const Main = () => {
             <div className='container mt-4'>
                 <div className='row border'>
                     <h1>In Main</h1>
+                    <GetPokemon />
                 </div>
             </div>
         </main>
