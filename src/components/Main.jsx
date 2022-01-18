@@ -10,7 +10,7 @@ const Main = () => {
     return (
         <main role="main">
             <div className='container mt-4'>
-                <div className='row border'>
+                <div className='row'>
                     {/* **** Get Pokemon Component ******** */}
                     <GetPokemon />
                 </div>
